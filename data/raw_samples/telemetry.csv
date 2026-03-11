@@ -1,0 +1,11 @@
+timestamp,service,environment,metric,value,unit
+2026-03-01T08:00:00Z,agent-api,prod,cpu_usage,72,percent
+2026-03-01T08:00:00Z,agent-api,prod,memory_usage,65,percent
+2026-03-01T11:40:00Z,fabric-pipeline,dev,pipeline_duration,420,seconds
+2026-03-02T09:00:00Z,foundry-agent,prod,token_usage,3800,tokens
+2026-03-02T14:15:00Z,cost-monitor,uat,cost_spike,120,usd
+2026-03-03T07:45:00Z,api-gateway,prod,error_rate,3,percent
+2026-03-03T13:00:00Z,telemetry-ingest,dev,ingestion_latency,250,milliseconds
+2026-03-03T18:20:00Z,foundry-agent,prod,prompt_latency,1800,milliseconds
+2026-03-04T10:25:00Z,fabric-pipeline,prod,pipeline_duration,510,seconds
+2026-03-04T21:00:00Z,cost-monitor,dev,cost_change,18,percent
