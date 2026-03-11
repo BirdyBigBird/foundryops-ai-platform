@@ -1,0 +1,11 @@
+deployment_id,deployed_at,service,environment,version,status,deployment_duration_minutes,initiated_by
+DEP001,2026-03-01T07:30:00Z,agent-api,prod,v1.4.2,Success,12,platform-engineer
+DEP002,2026-03-01T10:15:00Z,fabric-pipeline,dev,v2.1.0,Success,8,data-engineer
+DEP003,2026-03-02T08:50:00Z,foundry-agent,prod,v1.3.7,Failed,15,ai-platform-team
+DEP004,2026-03-02T13:40:00Z,cost-monitor,uat,v1.1.5,Success,6,finops-team
+DEP005,2026-03-03T07:10:00Z,api-gateway,prod,v3.0.1,Success,9,security-engineer
+DEP006,2026-03-03T12:25:00Z,telemetry-ingest,dev,v2.0.3,Success,11,data-engineer
+DEP007,2026-03-03T17:55:00Z,foundry-agent,prod,v1.3.8,Success,14,ai-platform-team
+DEP008,2026-03-04T09:45:00Z,fabric-pipeline,prod,v2.1.2,Success,10,data-engineer
+DEP009,2026-03-04T14:20:00Z,agent-api,uat,v1.4.3,Success,7,platform-engineer
+DEP010,2026-03-04T20:10:00Z,cost-monitor,dev,v1.1.6,Success,5,finops-team
