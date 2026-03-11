@@ -1,0 +1,11 @@
+timestamp,service,environment,cost_usd,currency
+2026-03-01T08:00:00Z,agent-api,prod,120,USD
+2026-03-01T12:00:00Z,fabric-pipeline,dev,45,USD
+2026-03-02T09:00:00Z,foundry-agent,prod,210,USD
+2026-03-02T14:00:00Z,cost-monitor,uat,30,USD
+2026-03-03T08:00:00Z,api-gateway,prod,160,USD
+2026-03-03T13:00:00Z,telemetry-ingest,dev,55,USD
+2026-03-03T18:00:00Z,foundry-agent,prod,220,USD
+2026-03-04T10:00:00Z,fabric-pipeline,prod,140,USD
+2026-03-04T15:00:00Z,agent-api,uat,75,USD
+2026-03-04T21:00:00Z,cost-monitor,dev,40,USD
