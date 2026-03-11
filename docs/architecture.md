@@ -26,28 +26,77 @@ The platform consists of four primary layers:
 
 # Data Platform (Microsoft Fabric)
 
-Operational data is ingested into Microsoft Fabric.
+Operational datasets stored in the repository will simulate external operational systems.
 
-Data sources include:
+These datasets include:
 
-- Incident records
-- Deployment events
-- Operational telemetry
-- Cost and usage metrics
+- incidents.csv
+- deployments.csv
+- telemetry.csv
+- costs.csv
 
-Data pipelines implement a layered architecture:
+These files represent raw operational telemetry.
 
-Bronze layer
+---
 
-Raw ingestion of operational data.
+## Data Ingestion Architecture
 
-Silver layer
+Microsoft Fabric pipelines will ingest these datasets into a layered lakehouse architecture.
 
-Data normalization and schema standardization.
+The architecture consists of three layers.
 
-Gold layer
+### Bronze Layer
 
-Curated analytical datasets used by the AI agent.
+The bronze layer stores raw ingested data exactly as received.
+
+Datasets ingested:
+
+- incidents
+- deployments
+- telemetry
+- costs
+
+Bronze tables:
+
+bronze_incidents  
+bronze_deployments  
+bronze_telemetry  
+bronze_costs  
+
+---
+
+### Silver Layer
+
+The silver layer standardizes schemas and cleans the data.
+
+Operations include:
+
+- schema normalization
+- timestamp conversion
+- environment standardization
+- data validation
+
+Silver tables:
+
+silver_incidents  
+silver_deployments  
+silver_telemetry  
+silver_costs  
+
+---
+
+### Gold Layer
+
+The gold layer contains curated analytical datasets used by the AI agent.
+
+Example datasets:
+
+incident_summary  
+deployment_failure_analysis  
+service_health_metrics  
+cost_anomaly_signals  
+
+These datasets provide structured inputs for the AI platform.
 
 ---
 
