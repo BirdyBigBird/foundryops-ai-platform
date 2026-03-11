@@ -36,3 +36,20 @@ def get_telemetry():
 def get_costs():
     df = pd.read_csv(COST_FILE)
     return df.to_dict(orient="records")
+
+@app.get("/analysis/incidents")
+def analyze_incidents():
+
+    df = pd.read_csv(INCIDENT_FILE)
+
+    severity_counts = df["severity"].value_counts().to_dict()
+
+    service_failures = df["service"].value_counts().to_dict()
+
+    avg_resolution = df["resolution_time_minutes"].mean()
+
+    return {
+        "incident_summary": severity_counts,
+        "service_failure_frequency": service_failures,
+        "average_resolution_time": avg_resolution
+    }
