@@ -9,21 +9,17 @@ terraform {
   }
 }
 
-resource "azurerm_resource_group" "foundryops_rg" {
-  name     = var.resource_group_name
-  location = var.location
+module "resource_group" {
+  source = "./modules/resource-group"
+
+  resource_group_name = var.resource_group_name
+  location            = var.location
 }
 
-resource "azurerm_storage_account" "platform_storage" {
-  name                     = var.storage_account_name
-  resource_group_name      = azurerm_resource_group.foundryops_rg.name
-  location                 = azurerm_resource_group.foundryops_rg.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
+module "storage_account" {
+  source = "./modules/storage-account"
 
-resource "azurerm_storage_container" "tfstate" {
-  name                  = "tfstate"
-  storage_account_name  = azurerm_storage_account.platform_storage.name
-  container_access_type = "private"
+  storage_account_name = var.storage_account_name
+  resource_group_name  = var.resource_group_name
+  location             = var.location
 }
