@@ -14,12 +14,12 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "foundryops_rg" {
-  name     = "rg-foundryops-platform"
-  location = "UK South"
+  name     = var.resource_group_name
+  location = var.location
 }
 
 resource "azurerm_storage_account" "platform_storage" {
-  name                     = "stfoundryopsplatform"
+  name                     = var.storage_account_name
   resource_group_name      = azurerm_resource_group.foundryops_rg.name
   location                 = azurerm_resource_group.foundryops_rg.location
   account_tier             = "Standard"
