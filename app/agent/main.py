@@ -18,6 +18,8 @@ from health_monitor import (
     cost_summary
 )
 
+from analysis_engine import detect_telemetry_anomalies
+
 app = FastAPI()
 
 INCIDENT_FILE = "../../data/raw_samples/incidents.csv"
@@ -109,5 +111,12 @@ def health_deployments():
 def health_cost():
 
     result = cost_summary(COST_FILE)
+
+    return result
+
+@app.get("/analysis/telemetry-anomalies")
+def telemetry_anomalies():
+
+    result = detect_telemetry_anomalies(TELEMETRY_FILE)
 
     return result
