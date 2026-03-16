@@ -34,3 +34,22 @@ def telemetry_summary(file_path):
     metric_summary = df.groupby("metric")["value"].mean().to_dict()
 
     return metric_summary
+
+def detect_telemetry_anomalies(telemetry_file):
+
+    import pandas as pd
+
+    df = pd.read_csv(telemetry_file)
+
+    cpu_avg = df["cpu_usage"].mean()
+    mem_avg = df["memory_usage"].mean()
+
+    cpu_threshold = cpu_avg * 1.5
+    mem_threshold = mem_avg * 1.5
+
+    anomalies = df[
+        (df["cpu_usage"] > cpu_threshold) |
+        (df["memory_usage"] > mem_threshold)
+    ]
+
+    return anomalies.to_dict(orient="records")
