@@ -38,6 +38,13 @@ def telemetry():
 
     return response.json()
 
+@app.get("/platform/ai/incident-explanations")
+def platform_incident_explanations():
+
+    response = requests.get(f"{AGENT_URL}/analysis/explanations/incidents")
+
+    return response.json()
+
 @app.get("/platform/health/incidents")
 def platform_health_incidents():
 
