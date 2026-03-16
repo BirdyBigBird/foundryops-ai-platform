@@ -7,6 +7,11 @@ from analysis_engine import (
     telemetry_summary
 )
 
+from ai_reasoner import (
+    explain_incident_patterns,
+    detect_cost_anomalies
+)
+
 app = FastAPI()
 
 INCIDENT_FILE = "../../data/raw_samples/incidents.csv"
@@ -63,5 +68,19 @@ def deployment_failures():
 def telemetry_analysis():
 
     result = telemetry_summary(TELEMETRY_FILE)
+
+    return result
+
+@app.get("/analysis/explanations/incidents")
+def incident_explanation():
+
+    result = explain_incident_patterns(INCIDENT_FILE)
+
+    return result
+
+@app.get("/analysis/cost-anomalies")
+def cost_anomalies():
+
+    result = detect_cost_anomalies(COST_FILE)
 
     return result
