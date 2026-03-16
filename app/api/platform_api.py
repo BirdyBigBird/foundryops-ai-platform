@@ -38,6 +38,13 @@ def telemetry():
 
     return response.json()
 
+@app.get("/platform/telemetry/anomalies")
+def platform_telemetry_anomalies():
+
+    response = requests.get(f"{AGENT_URL}/analysis/telemetry-anomalies")
+
+    return response.json()
+    
 @app.get("/platform/ai/incident-explanations")
 def platform_incident_explanations():
 
