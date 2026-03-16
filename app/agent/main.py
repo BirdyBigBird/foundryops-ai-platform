@@ -1,6 +1,12 @@
 from fastapi import FastAPI
 import pandas as pd
 
+from analysis_engine import (
+    analyze_incidents,
+    detect_deployment_failures,
+    telemetry_summary
+)
+
 app = FastAPI()
 
 INCIDENT_FILE = "../../data/raw_samples/incidents.csv"
@@ -38,18 +44,24 @@ def get_costs():
     return df.to_dict(orient="records")
 
 @app.get("/analysis/incidents")
-def analyze_incidents():
+def incident_analysis():
 
-    df = pd.read_csv(INCIDENT_FILE)
+    result = analyze_incidents(INCIDENT_FILE)
 
-    severity_counts = df["severity"].value_counts().to_dict()
+    return result
 
-    service_failures = df["service"].value_counts().to_dict()
 
-    avg_resolution = df["resolution_time_minutes"].mean()
+@app.get("/analysis/deployments")
+def deployment_failures():
 
-    return {
-        "incident_summary": severity_counts,
-        "service_failure_frequency": service_failures,
-        "average_resolution_time": avg_resolution
-    }
+    result = detect_deployment_failures(DEPLOYMENT_FILE)
+
+    return result
+
+
+@app.get("/analysis/telemetry")
+def telemetry_analysis():
+
+    result = telemetry_summary(TELEMETRY_FILE)
+
+    return result
