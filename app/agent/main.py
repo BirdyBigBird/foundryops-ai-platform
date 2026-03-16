@@ -12,6 +12,12 @@ from ai_reasoner import (
     detect_cost_anomalies
 )
 
+from health_monitor import (
+    incident_volume,
+    deployment_failure_rate,
+    cost_summary
+)
+
 app = FastAPI()
 
 INCIDENT_FILE = "../../data/raw_samples/incidents.csv"
@@ -82,5 +88,26 @@ def incident_explanation():
 def cost_anomalies():
 
     result = detect_cost_anomalies(COST_FILE)
+
+    return result
+
+@app.get("/health/incidents")
+def health_incidents():
+
+    result = incident_volume(INCIDENT_FILE)
+
+    return result
+
+@app.get("/health/deployments")
+def health_deployments():
+
+    result = deployment_failure_rate(DEPLOYMENT_FILE)
+
+    return result
+
+@app.get("/health/cost")
+def health_cost():
+
+    result = cost_summary(COST_FILE)
 
     return result
