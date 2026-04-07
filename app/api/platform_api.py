@@ -36,6 +36,13 @@ def telemetry():
 
     response = requests.get(f"{AGENT_URL}/analysis/telemetry")
 
+@app.get("/platform/report")
+def platform_report():
+
+    response = requests.get(f"{AGENT_URL}/analysis/report")
+
+    return response.json()
+
     return response.json()
 
 @app.get("/platform/telemetry/anomalies")
