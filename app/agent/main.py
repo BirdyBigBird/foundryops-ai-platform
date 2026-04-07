@@ -121,3 +121,15 @@ def telemetry_anomalies():
     result = detect_telemetry_anomalies(TELEMETRY_FILE)
 
     return result
+
+@app.get("/analysis/report")
+def operational_report():
+
+    result = generate_operational_report(
+        INCIDENT_FILE,
+        DEPLOYMENT_FILE,
+        TELEMETRY_FILE,
+        COST_FILE
+    )
+
+    return result
