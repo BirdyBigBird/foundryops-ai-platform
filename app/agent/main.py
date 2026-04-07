@@ -19,6 +19,7 @@ from health_monitor import (
 )
 
 from analysis_engine import detect_telemetry_anomalies
+from report_generator import generate_operational_report
 
 app = FastAPI()
 
